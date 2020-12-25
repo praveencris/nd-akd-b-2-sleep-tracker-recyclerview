@@ -1,14 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <!-- TODO (01) Add an ImageView and set its id to quality_image. -->
+    <!-- DONE (01) Add an ImageView and set its id to quality_image. -->
 
-    <!-- TODO (02) Add a TextView to the right of quality_image and set its id to sleep_length. -->
+    <!-- DONE (02) Add a TextView to the right of quality_image and set its id to sleep_length. -->
 
-    <!-- TODO (03) Add a TextView below sleep_length and set its id to quality_string. -->
+    <!-- DONE (03) Add a TextView below sleep_length and set its id to quality_string. -->
 
+    <ImageView
+        android:id="@+id/sleep_quality_imv"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/ic_sleep_5"
+        android:contentDescription="@string/sleep_quality_icon" />
+
+    <TextView
+        android:id="@+id/sleep_length_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/sleep_quality_textview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/sleep_quality_imv"
+        app:layout_constraintTop_toTopOf="@+id/sleep_quality_imv"
+        app:layout_constraintVertical_chainStyle="spread"
+        tools:text="Wednesday" />
+
+    <TextView
+        android:id="@+id/sleep_quality_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/sleep_length_textview"
+        app:layout_constraintStart_toStartOf="@+id/sleep_length_textview"
+        app:layout_constraintTop_toBottomOf="@+id/sleep_length_textview"
+        tools:text="Excellent!!" />
 </androidx.constraintlayout.widget.ConstraintLayout>
