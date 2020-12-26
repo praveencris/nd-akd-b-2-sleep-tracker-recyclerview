@@ -119,8 +119,8 @@ class SleepTrackerFragment : Fragment() {
 
         sleepTrackerViewModel.nights.observe(viewLifecycleOwner, Observer {
             it?.let {
-                // TODO (11) Replace submitList call with addHeaderAndSubmitList.
-                adapter.submitList(it)
+                // DONE (11) Replace submitList call with addHeaderAndSubmitList.
+                adapter.addHeaderAndSubmitList(it)
             }
         })
 
