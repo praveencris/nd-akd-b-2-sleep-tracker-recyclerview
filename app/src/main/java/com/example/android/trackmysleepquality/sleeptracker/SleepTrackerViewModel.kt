@@ -17,15 +17,11 @@
 package com.example.android.trackmysleepquality.sleeptracker
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.*
 import com.example.android.trackmysleepquality.database.SleepDatabaseDao
 import com.example.android.trackmysleepquality.database.SleepNight
 import com.example.android.trackmysleepquality.formatNights
 import kotlinx.coroutines.*
-import androidx.lifecycle.viewModelScope
 
 /**
  * ViewModel for SleepTrackerFragment.
@@ -48,7 +44,7 @@ class SleepTrackerViewModel(
      * By default, all coroutines started in uiScope will launch in [Dispatchers.Main] which is
      * the main thread on Android. This is a sensible default because most coroutines started by
      * a [ViewModel] update the UI after performing some processing.
-     */
+    */
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
      */
 
@@ -105,6 +101,7 @@ class SleepTrackerViewModel(
      */
 
     private val _navigateToSleepQuality = MutableLiveData<SleepNight>()
+
     /**
      * Call this immediately after calling `show()` on a toast.
      *
@@ -133,7 +130,7 @@ class SleepTrackerViewModel(
     }
 
     private val _navigateToSleepDataQuality = MutableLiveData<Long>()
-    val navigateToSleepDataQuality
+    val navigateToSleepDataQuality: LiveData<Long>
         get() = _navigateToSleepDataQuality
 
     fun onSleepNightClicked(id: Long) {
@@ -163,11 +160,11 @@ class SleepTrackerViewModel(
      */
     private suspend fun getTonightFromDatabase(): SleepNight? {
         //return withContext(Dispatchers.IO) {
-            var night = database.getTonight()
-            if (night?.endTimeMilli != night?.startTimeMilli) {
-                night = null
-            }
-            return night
+        var night = database.getTonight()
+        if (night?.endTimeMilli != night?.startTimeMilli) {
+            night = null
+        }
+        return night
         //}
     }
 
@@ -248,8 +245,8 @@ class SleepTrackerViewModel(
      * using memory and resources.
 
     override fun onCleared() {
-        super.onCleared()
-        viewModelJob.cancel()
+    super.onCleared()
+    viewModelJob.cancel()
     }
      */
 }
