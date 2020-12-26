@@ -48,9 +48,10 @@ fun TextView.setSleepDurationFormatted(item:SleepNight?){
     }
 }
 
+//Without using extension function
 @BindingAdapter("sleepQualityString")
-fun TextView.setSleepQualityString(item:SleepNight?){
+fun setSleepQualityString(textView: TextView,item:SleepNight?){
     item?.let {
-        text= convertNumericQualityToString(item.sleepQuality,context.resources)
+       textView.text= convertNumericQualityToString(item.sleepQuality,textView.context.resources)
     }
 }
